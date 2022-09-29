@@ -39,5 +39,6 @@ export async function getItems() {
 }
 
 export async function boughtItem(id) {
-    console.log('id', id);
+    const response = await client.from('lists').update({ bought: true }).eq('id', id).single();
+    return response;
 }

@@ -64,8 +64,15 @@ function displayItems() {
         } else {
             liEl.addEventListener('click', async () => {
                 const response = await boughtItem(item.id);
-                //set response.data and .error into state
-                //logic if error
+                error = response.error;
+                const updatedItem = response.data;
+                if (error) {
+                    displayError();
+                } else {
+                    const index = items.indexOf(item);
+                    items[index] = updatedItem;
+                }
+
                 displayItems();
             });
         }
