@@ -2,6 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 import { renderItem } from './render-utils.js';
+import { createItem } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
@@ -22,6 +23,16 @@ window.addEventListener('load', () => {
         { name: 'Milk', quantity: 1 },
     ];
     displayItems();
+});
+
+addItemForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(addItemForm);
+    const newItem = { name: formData.get('item-to-add') };
+
+    const response = await createItem(newItem);
+
+    addItemForm.reset();
 });
 /* Display Functions */
 

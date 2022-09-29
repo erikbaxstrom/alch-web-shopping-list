@@ -28,5 +28,7 @@ export async function signOutUser() {
 }
 
 /* Data functions */
-//
-//change
+
+export async function createItem(newItem) {
+    console.log(newItem);
+}
