@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 import { renderItem } from './render-utils.js';
-import { createItem, getItems } from './fetch-utils.js';
+import { createItem, getItems, boughtItem } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
@@ -57,9 +57,19 @@ function displayItems() {
     shoppingList.innerHTML = '';
     //loop through items
     for (let item of items) {
-        //  render
         const liEl = renderItem(item);
-        //  append to ul
+
+        if (item.bought) {
+            liEl.classList.add('bought');
+        } else {
+            liEl.addEventListener('click', async () => {
+                const response = await boughtItem(item.id);
+                //set response.data and .error into state
+                //logic if error
+                displayItems();
+            });
+        }
+
         shoppingList.append(liEl);
     }
 }

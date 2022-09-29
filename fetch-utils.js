@@ -38,4 +38,6 @@ export async function getItems() {
     return items;
 }
 
-// export async function
+export async function boughtItem(id) {
+    console.log('id', id);
+}
