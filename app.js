@@ -6,7 +6,6 @@ import { createItem } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
-const itemToAdd = document.getElementById('item-to-add');
 const errorDisplay = document.getElementById('error-display');
 const shoppingList = document.getElementById('shopping-list');
 
@@ -28,12 +27,15 @@ window.addEventListener('load', () => {
 addItemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(addItemForm);
-    const newItem = { name: formData.get('item-to-add') };
+    const newItem = { name: formData.get('item-to-add'), quantity: formData.get('quantity') };
 
     const response = await createItem(newItem);
+    //response.error/data -> error, const item
+    //logic for error or push&display
 
     addItemForm.reset();
 });
+
 /* Display Functions */
 
 function displayItems() {
