@@ -30,6 +30,7 @@
     -   table and columns
     -   email auth
 -   connect to supabase / user auth
+-   html/css
 -   add items and display added items
 -   display list of items on page load
 -   mark items bought
