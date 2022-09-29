@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 import { renderItem } from './render-utils.js';
-import { createItem } from './fetch-utils.js';
+import { createItem, getItems } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
@@ -14,15 +14,16 @@ let items = [];
 let error = null;
 
 /* Events */
-window.addEventListener('load', () => {
-    // todo: set items and error state from getItems();
-    items = [
-        { name: 'Beans', quantity: 3 },
-        { name: 'Cheerios', quantity: 8 },
-        { name: 'Milk', quantity: 1 },
-    ];
-    displayItems();
-    displayError();
+window.addEventListener('load', async () => {
+    const response = await getItems();
+    error = response.error;
+    items = response.data;
+
+    if (error) {
+        displayError();
+    } else {
+        displayItems();
+    }
 });
 
 addItemForm.addEventListener('submit', async (e) => {
