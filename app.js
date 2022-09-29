@@ -22,6 +22,7 @@ window.addEventListener('load', () => {
         { name: 'Milk', quantity: 1 },
     ];
     displayItems();
+    displayError();
 });
 
 addItemForm.addEventListener('submit', async (e) => {
@@ -60,4 +61,8 @@ function displayItems() {
         //  append to ul
         shoppingList.append(liEl);
     }
+}
+
+function displayError() {
+    errorDisplay.textContent = error;
 }
