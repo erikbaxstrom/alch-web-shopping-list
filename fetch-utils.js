@@ -30,5 +30,5 @@ export async function signOutUser() {
 /* Data functions */
 
 export async function createItem(newItem) {
-    console.log(newItem);
+    return client.from('lists').insert(newItem).single();
 }

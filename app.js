@@ -27,11 +27,23 @@ window.addEventListener('load', () => {
 addItemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(addItemForm);
-    const newItem = { name: formData.get('item-to-add'), quantity: formData.get('quantity') };
+    const newItem = {
+        name: formData.get('item-to-add'),
+        quantity: formData.get('quantity'),
+        bought: false,
+    };
 
     const response = await createItem(newItem);
-    //response.error/data -> error, const item
-    //logic for error or push&display
+    console.log(response);
+    error = response.error;
+    const item = response.data;
+
+    if (error) {
+        displayError();
+    } else {
+        items.unshift(item);
+        displayItems();
+    }
 
     addItemForm.reset();
 });
