@@ -30,10 +30,12 @@ export async function signOutUser() {
 /* Data functions */
 
 export async function createItem(newItem) {
-    return client.from('lists').insert(newItem).single();
+    return await client.from('lists').insert(newItem).single();
 }
 
 export async function getItems() {
-    const items = client.from('lists').select('*').order('created_at', { ascending: false });
+    const items = await client.from('lists').select('*').order('created_at', { ascending: false });
     return items;
 }
+
+// export async function
