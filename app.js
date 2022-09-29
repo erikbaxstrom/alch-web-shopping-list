@@ -2,16 +2,18 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 import { renderItem } from './render-utils.js';
-import { createItem, getItems, boughtItem } from './fetch-utils.js';
+import { createItem, getItems, boughtItem, removeAllItems, getUser } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
 const errorDisplay = document.getElementById('error-display');
 const shoppingList = document.getElementById('shopping-list');
+const removeAllButton = document.getElementById('remove-all');
 
 /* State */
 let items = [];
 let error = null;
+let user = getUser(); //??why does this need to be here? user has an identical declaration in /auth/user.js which is included in this file. So why does it need to be delcared again in this file?
 
 /* Events */
 window.addEventListener('load', async () => {
@@ -36,7 +38,6 @@ addItemForm.addEventListener('submit', async (e) => {
     };
 
     const response = await createItem(newItem);
-    console.log(response);
     error = response.error;
     const item = response.data;
 
@@ -48,6 +49,17 @@ addItemForm.addEventListener('submit', async (e) => {
     }
 
     addItemForm.reset();
+});
+
+removeAllButton.addEventListener('click', async () => {
+    const response = await removeAllItems(user);
+    error = response.error;
+    if (error) {
+        displayError();
+    } else {
+        items = [];
+        displayItems();
+    }
 });
 
 /* Display Functions */
