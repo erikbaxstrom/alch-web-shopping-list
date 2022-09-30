@@ -8,7 +8,7 @@ import {
     boughtItem,
     removeAllItems,
     getUser,
-    removeBoughtItems,
+    removeAllBoughtItems,
 } from './fetch-utils.js';
 
 /* Get DOM Elements */
@@ -17,7 +17,7 @@ const errorDisplay = document.getElementById('error-display');
 const shoppingList = document.getElementById('shopping-list');
 const removeAllButton = document.getElementById('remove-all');
 const userDisplay = document.getElementById('user-display');
-const removeBoughtButton = document.getElementById('remove-bought');
+const removeAllBoughtButton = document.getElementById('remove-all-bought');
 
 /* State */
 let items = [];
@@ -72,8 +72,8 @@ removeAllButton.addEventListener('click', async () => {
     }
 });
 
-removeBoughtButton.addEventListener('click', async () => {
-    const response = await removeBoughtItems(user);
+removeAllBoughtButton.addEventListener('click', async () => {
+    const response = await removeAllBoughtItems(user);
     error = response.error;
     if (error) {
         displayError();

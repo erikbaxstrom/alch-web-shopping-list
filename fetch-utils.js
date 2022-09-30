@@ -48,6 +48,6 @@ export async function removeAllItems(user) {
     return response;
 }
 
-export async function removeBoughtItems(user) {
+export async function removeAllBoughtItems(user) {
     return { error: null };
 }
