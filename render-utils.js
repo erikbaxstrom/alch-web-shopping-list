@@ -1,6 +1,6 @@
 export function renderItem(item) {
     const li = document.createElement('li');
-    li.textContent = `${item.quantity} ${item.name}`;
+    li.innerHTML = `<span>${item.quantity}</span><span>${item.name}</span>`;
     const boughtBut = document.createElement('button');
     boughtBut.classList.add('bought-button');
     boughtBut.textContent = '✅';
