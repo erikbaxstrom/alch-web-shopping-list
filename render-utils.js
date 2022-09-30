@@ -3,11 +3,11 @@ export function renderItem(item) {
     li.textContent = `${item.quantity} ${item.name}`;
     const boughtBut = document.createElement('button');
     boughtBut.classList.add('bought-button');
-    boughtBut.textContent = 'Bought';
+    boughtBut.textContent = '✅';
     li.append(boughtBut);
     const removeBut = document.createElement('button');
     removeBut.classList.add('remove-button');
-    removeBut.textContent = 'Remove';
+    removeBut.textContent = '❎';
     li.append(removeBut);
     return li;
 }
