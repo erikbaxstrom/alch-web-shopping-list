@@ -97,6 +97,7 @@ function displayItems() {
     for (let item of items) {
         const liEl = renderItem(item);
         const removeButton = liEl.querySelector('.remove-button');
+        const boughtButton = liEl.querySelector('.bought-button');
         removeButton.addEventListener('click', async () => {
             const response = await removeItem(item.id);
             error = response.error;
@@ -111,8 +112,8 @@ function displayItems() {
         });
         if (item.bought) {
             liEl.classList.add('bought');
+            boughtButton.disabled = true;
         } else {
-            const boughtButton = liEl.querySelector('.bought-button');
             boughtButton.addEventListener('click', async () => {
                 const response = await boughtItem(item.id);
                 error = response.error;
