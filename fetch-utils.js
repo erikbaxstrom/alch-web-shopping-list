@@ -49,5 +49,10 @@ export async function removeAllItems(user) {
 }
 
 export async function removeAllBoughtItems(user) {
-    return { error: null };
+    const response = await client
+        .from('lists')
+        .delete()
+        .eq('user_id', user.id)
+        .match({ bought: true });
+    return response;
 }
