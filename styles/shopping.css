@@ -1,0 +1,14 @@
+#shopping-list li {
+    background-color: beige;
+    padding: 0.25rem;
+    width: 300px;
+    border: 1px solid gray;
+}
+.bought {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#error-display {
+    color: red;
+}
