@@ -9,6 +9,7 @@ import {
     removeAllItems,
     getUser,
     removeAllBoughtItems,
+    removeItem,
 } from './fetch-utils.js';
 
 /* Get DOM Elements */
@@ -97,7 +98,16 @@ function displayItems() {
         const liEl = renderItem(item);
         const removeButton = liEl.querySelector('.remove-button');
         removeButton.addEventListener('click', async () => {
-            console.log('clicke');
+            const response = await removeItem(item.id);
+            error = response.error;
+            const removedItem = response.data;
+            if (error) {
+                displayError();
+            } else {
+                const index = items.indexOf(item);
+                items.splice(index, 1);
+                displayItems();
+            }
         });
         if (item.bought) {
             liEl.classList.add('bought');

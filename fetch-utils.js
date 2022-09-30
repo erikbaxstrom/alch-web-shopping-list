@@ -56,3 +56,8 @@ export async function removeAllBoughtItems(user) {
         .match({ bought: true });
     return response;
 }
+
+export async function removeItem(id) {
+    const response = await client.from('lists').delete().match({ id: id });
+    return response;
+}
