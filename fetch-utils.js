@@ -47,3 +47,7 @@ export async function removeAllItems(user) {
     const response = await client.from('lists').delete().eq('user_id', user.id);
     return response;
 }
+
+export async function removeBoughtItems(user) {
+    return { error: null };
+}
