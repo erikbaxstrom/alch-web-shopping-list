@@ -95,11 +95,15 @@ function displayItems() {
     shoppingList.innerHTML = '';
     for (let item of items) {
         const liEl = renderItem(item);
-        //
+        const removeButton = liEl.querySelector('.remove-button');
+        removeButton.addEventListener('click', async () => {
+            console.log('clicke');
+        });
         if (item.bought) {
             liEl.classList.add('bought');
         } else {
-            liEl.addEventListener('click', async () => {
+            const boughtButton = liEl.querySelector('.bought-button');
+            boughtButton.addEventListener('click', async () => {
                 const response = await boughtItem(item.id);
                 error = response.error;
                 const updatedItem = response.data;
