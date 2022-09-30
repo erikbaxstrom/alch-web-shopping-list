@@ -1,0 +1,16 @@
+#shopping-list li {
+    background-color: beige;
+    padding: 0.5rem;
+    width: 300px;
+    border: 1px solid gray;
+    display: grid;
+    grid-template-columns: 10% 60% 15% 15%;
+}
+.bought span {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#error-display {
+    color: red;
+}
