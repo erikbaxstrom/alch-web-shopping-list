@@ -9,6 +9,7 @@ const addItemForm = document.getElementById('add-item-form');
 const errorDisplay = document.getElementById('error-display');
 const shoppingList = document.getElementById('shopping-list');
 const removeAllButton = document.getElementById('remove-all');
+const userDisplay = document.getElementById('user-display');
 
 /* State */
 let items = [];
@@ -26,6 +27,7 @@ window.addEventListener('load', async () => {
     } else {
         displayItems();
     }
+    displayUser();
 });
 
 addItemForm.addEventListener('submit', async (e) => {
@@ -95,4 +97,8 @@ function displayItems() {
 
 function displayError() {
     errorDisplay.textContent = error;
+}
+
+function displayUser() {
+    userDisplay.textContent = user.email;
 }
