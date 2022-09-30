@@ -101,7 +101,7 @@ function displayItems() {
         removeButton.addEventListener('click', async () => {
             const response = await removeItem(item.id);
             error = response.error;
-            const removedItem = response.data;
+            // const removedItem = response.data; //better to remove indexOf(removedItem.item)? or just assume that if there was no error, it's fine to get the index from state?
             if (error) {
                 displayError();
             } else {
